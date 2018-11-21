@@ -4,6 +4,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringRunner
+import reactor.core.publisher.toMono
 
 /*@RunWith(SpringRunner::class)
 @SpringBootTest*/
@@ -67,13 +68,27 @@ class DemoApplicationTests {
 
     @Test
     fun test3(){
-        var a = 1
-        // 模板中的简单名称：
-        val s1 = "a is $a"
-        println(s1)
-        a = 2
-        // 模板中的任意表达式：
-        val s2 = "${s1.replace("is", "was")}, but now is $a"
-        println(s2)
+//        var a = 1
+//        // 模板中的简单名称：
+//        val s1 = "a is $a"
+//        println(s1)
+//        a = 2
+//        // 模板中的任意表达式：
+//        val s2 = "${s1.replace("is", "was")}, but now is $a"
+//        println(s2)
+
+        var b: String? = "abc"
+        b= null
+        val l = b?.length ?: -1
+        b?.let {
+            println("${b.length}")
+        }?:let {
+            println()
+        }
+    }
+
+    @Test
+    fun test4(){
+
     }
 }
