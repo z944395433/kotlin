@@ -87,8 +87,20 @@ class DemoApplicationTests {
         }
     }
 
-    @Test
+    /*@Test
     fun test4(){
 
+            for ( i in 1..3){
+                for (j in 1..2){
+                    p
+                }
+            }
+    }*/
+    @Test
+    fun testt() = {
+
     }
+
+
+
 }
