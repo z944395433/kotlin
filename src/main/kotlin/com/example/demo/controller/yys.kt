@@ -1,6 +1,7 @@
 package com.example.demo.controller
 
 import java.lang.Thread.sleep
+import java.util.*
 
 class yys : man {
     override fun sleep() {
@@ -44,7 +45,20 @@ class hh{
 //        }
 
 
-       print(t(5,{it>1}))
+//       print(t(5,{it>1}))
+
+        Scanner(System.`in`).let {
+            print("输入你想说的话")
+            while (true){
+                it.nextLine().apply {
+                    this.replace("吗？","!").let {
+                        println(it)
+                    }
+
+                }
+
+            }
+        }
 
     }
 

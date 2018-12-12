@@ -1,10 +1,18 @@
 package com.example.demo
 
+import org.apache.commons.lang3.StringUtils
+import org.codehaus.jackson.JsonNode
+import org.codehaus.jackson.map.ObjectMapper
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringRunner
 import reactor.core.publisher.toMono
+import kotlin.concurrent.thread
+import org.springframework.test.context.transaction.TestTransaction.start
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 /*@RunWith(SpringRunner::class)
 @SpringBootTest*/
@@ -97,9 +105,62 @@ class DemoApplicationTests {
             }
     }*/
     @Test
-    fun testt() = {
-
+    fun testt():Unit{
+       /* mutableListOf<String>().apply {
+            this.add("123")
+            this.add("321")
+        }.filterIndexed{i,x ->
+            x == "123"
+        }.map {
+            it == "321"
+        }*/
+       StringUtils.join(listOf<String>("123","321","520"),"*").apply {
+           println(this)
     }
+    }
+    @Test
+    fun hhhhh() {
+        /*ArrayList<String>().apply {
+            this.add("123")
+        }.map {
+            "AAA" to it
+       }.toMap().toMutableMap().apply {
+           print(this)
+       }
+
+        mutableMapOf<String,Any>("123" to "123").apply {
+            println(this)
+        }*/
+
+        /**
+         *把数组中对象转化列子
+         */
+
+
+        var str : String = """[{"A":"1","B":"2"},{"C":"3","D":"4"}]"""
+        ObjectMapper().let {
+            it.readTree(str).map {
+                (Math.random()*100).toString() to it
+            }.toMap().toMutableMap().apply {
+                println(this)
+            }
+        }
+     /* mutableMapOf<String,Any>().app {
+            ObjectMapper().let {ob->
+                ob.readTree(str).forEach {json->
+                    println(Math.random()*100)
+                    it[(Math.random()*100).toString()] to json
+                }
+            }
+        }*/
+
+
+       }
+
+
+
+
+
 
 
 

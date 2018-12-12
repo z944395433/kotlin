@@ -10,8 +10,13 @@ class SystemController{
     @PostMapping("/login.php")
     fun login(): String {
         var hello: String? = null
-        hello?.let { println() }
+        hello?.let {
+            println() }
         return "123"
+    }
+
+    fun main(args: Array<String>){
+
     }
 
 }
