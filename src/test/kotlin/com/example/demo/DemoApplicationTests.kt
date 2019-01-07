@@ -3,6 +3,7 @@ package com.example.demo
 import org.apache.commons.lang3.StringUtils
 import org.codehaus.jackson.JsonNode
 import org.codehaus.jackson.map.ObjectMapper
+import org.json.JSONObject
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
@@ -10,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner
 import reactor.core.publisher.toMono
 import kotlin.concurrent.thread
 import org.springframework.test.context.transaction.TestTransaction.start
+import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -140,22 +142,60 @@ class DemoApplicationTests {
         var str : String = """[{"A":"1","B":"2"},{"C":"3","D":"4"}]"""
         ObjectMapper().let {
             it.readTree(str).map {
+
                 (Math.random()*100).toString() to it
             }.toMap().toMutableMap().apply {
                 println(this)
             }
         }
-     /* mutableMapOf<String,Any>().app {
-            ObjectMapper().let {ob->
-                ob.readTree(str).forEach {json->
-                    println(Math.random()*100)
-                    it[(Math.random()*100).toString()] to json
-                }
-            }
-        }*/
+
+
+        /* mutableMapOf<String,Any>().app {
+               ObjectMapper().let {ob->
+                   ob.readTree(str).forEach {json->
+                       println(Math.random()*100)
+                       it[(Math.random()*100).toString()] to json
+                   }
+               }
+           }*/
 
 
        }
+
+
+    @Test
+    fun testMap() = listOf(1, 2, 3, 4, 5, 6).map {
+        it
+    }.let {
+        println(it)
+        it
+    }.flatMap { i ->
+        mutableListOf<String>("1")
+    }.let {
+        println(it)
+    }
+
+//@Test
+//fun testmap() =
+//        mutableListOf<String>("name:123","123","erw").map {
+//    (Math.random()*100) to it
+//}.toMap().apply {
+//    println(this)
+//}.toMutableMap().let {
+//    println(it)
+//    ObjectMapper().readTree(File("E:\\json.txt")).map {
+//        println(it)
+//    }.let {
+//
+//    }
+//}
+
+//@Test
+//fun yys() = ObjectMapper().readTree("""{"name":"yys","age":"18"}""").let {
+//   // println(it["name"])
+//    it["name"] to "man"
+//}.
+
 
 
 
